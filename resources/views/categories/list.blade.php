@@ -19,6 +19,13 @@
     <div class="paginate">{{ $categories->withQueryString()->links() }}</div>
 
     <main class="main-main">
+    <nav>
+            <ul>
+                <li>
+                    <a href="{{ route('category-create-form') }}">New Category</a>
+                </li>
+            </ul>
+        </nav>
 
         @foreach($categories as $category)
         <div class="container">
@@ -27,7 +34,7 @@
                     <center>
                         <p>
                             <b>
-                                
+                                <img src="{{ Storage::url($category->image) }}" alt="">
                                 <a href="{{ route('product-list',['category_id'=>$category->id]) }}">{{$category->name}}</a>
                             </b>
                         </p>

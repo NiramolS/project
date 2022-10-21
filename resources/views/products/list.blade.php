@@ -32,7 +32,7 @@
         <div class="item">
             <div class="pro">
                 <center>
-                    <img src="{{ Storage::url($product->image) }}" alt="" ; >
+                    <img src="{{ Storage::url($product->image) }}" alt="" >
                     <p><b>{{$product->name}}</b></p>
                     <p>{{ number_format((double)$product->price, 2) }}</p>
                     <button><li><a href="{{ route('product-view', [
