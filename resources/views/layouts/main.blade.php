@@ -26,11 +26,7 @@
                     </div>
                 </li>
                 <li><a>CONTACT US</a></li>
-                    
-                    
-                     <!-- <a>USERS</a>
-                    เหลือ status error -->
-                
+                <li><a>LOG OUT</a></li> <!--เหลือ status error -->   
             </ul>
             @auth
         <nav class="user-panel">
@@ -38,9 +34,6 @@
             <a href="{{ route('logout') }}">Logout</a>
         </nav>
         @endauth
-            <nav class="user-panel">
-                Logout
-            </nav>
         </nav>
         <center><img src="{{ asset('images/index/' . 'logo.png') }}" alt="index" style="width: 70px; " class="logo"></center>
         <h1 class="title">

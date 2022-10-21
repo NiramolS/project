@@ -29,8 +29,13 @@
                </td>
         </tr>
         @endforeach
+
+        <tr>
+            <td colspan="4" style="text-align: right;">{{ $cart->total_price}}</td>
+        </tr>
     </table>
 
     <button type="submit">Update Cart</button>
+    <a href="{{ route('cart-confirm') }}" style="color: black;">Confirm</a>
 </form>
 @endsection

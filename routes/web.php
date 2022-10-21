@@ -53,4 +53,8 @@ Route::controller(CartController::class)->group(function (){
     Route::get('/cart/add/{product}', 'addProduct')->name('cart-add-product');
     Route::get('/cart/remove/{product}', 'removeProduct')->name('cart-remove-product');
     Route::post('/cart/update', 'update')->name('cart-update');
+    Route::get('/cart/confirm', 'confirm')->name('cart-confirm');
+    Route::get('/cart/completed', 'listCompleted')->name('cart-completed');
+    Route::get('/cart/completed/{cart}', 'cartDetail')->name('cart-detail');
+    Route::get('/cart/completed/{cart}/export', 'cartExport')->name('cart-export');
 });

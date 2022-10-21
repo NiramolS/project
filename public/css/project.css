@@ -29,36 +29,34 @@ hr {
 }
 
 .manu-list {
-    display: block;
     font-family: "Gill Sans", sans-serif;
     flex-flow: row wrap;
-    padding: 5px 10px 5px 10px;
+    padding: 5px 20px 5px 20px;
     color: #ffffff;
     background-color: #A02228;
     border-top: 1px solid #e5e5e5;
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 30px;
     position: fixed;
     top: 0%;
     left: 0%;
     width: 100%;
+    height: 90px;
 }
 
 .manu-list a {
     color: #ffffff;
+    display: inline;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    width: 30px;
-    font-weight: 20px;
+    font-weight: 18px;
     margin: 35px;
     text-decoration: none;
     position: relative;
-    text-decoration: none;
-    font-size: 20px;
 }
 
 .manu-list a:hover {
     background-color: rgb(247, 238, 229);
-    border-radius: 70px;
+    border-radius: 50px;
     color: gray;
     padding: 10px 20px 10px 20px;
 }
@@ -73,9 +71,6 @@ hr {
     margin: 15px;
     padding: 15px;
 }
-.sub-menu{
-    display:none;
-}
 .manu-list ul li:hover .sub-menu{
     display: block;
     position: absolute;
@@ -85,19 +80,13 @@ hr {
     padding: 0;
 }
 
-.sub-menu ul{
-    position: relative;
-    display: inline-block;
-}
-
-/*.manu-list ul li:hover .sub-menu ul{
+.manu-list ul li:hover .sub-menu ul{
     display: block;
     margin: 10px;
-}*/
+}
 .manu-list ul li:hover .sub-menu ul li{
-    width: 100px;
-    height: 70px;
-    padding: 2px;
+    width: 150px;
+    padding: 10px;
     border-bottom: 1px dotted #fff;
     background: transparent;
     border-radius: 0;
@@ -325,4 +314,15 @@ li{
 
 .img-product-view {
     width: 20%;
+}
+
+.view-table{
+    width: 60%;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+.img-detail-com {
+    width: 50px;
+    height: 50px;
 }

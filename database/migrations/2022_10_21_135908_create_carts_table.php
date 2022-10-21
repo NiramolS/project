@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->decimal('total_price')->default(0);
+            $table->string('status')->default('INCOMPLETE');
             $table->timestamps();
         });
     }

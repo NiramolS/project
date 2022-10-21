@@ -15,26 +15,33 @@
         </ul>
     </nav>
 
-    <table width="50%">
+    <table class="view-table">
         <tr>
-        <td rowspan="4">
-            <img src="{{ Storage::url($product->image) }}" alt=""  class="img-product-view" >
-        </td>
+            <td rowspan="5">
+                <img src="{{ Storage::url($product->image) }}" alt="" class="img-product-view" width="50px">
+            </td>
+        </tr>
         <tr>
-            <td>Code ::</td>
+            <td>Code</td>
+            <td>::</td>
             <td>{{ $product->code }}</td>
         </tr>
         <tr>
-            <td>Product :: </td>
+            <td>Product</td>
+            <td>::</td>
             <td>{{ $product->name }}</td>
         </tr>
         <tr>
-            <td>Category ::</td>
+            <td>Category</td>
+            <td>::</td>
             <td>{{ $product->category->name }}</td>
         </tr>
-        <td>Price ::</td>
-        <td>{{ number_format((float) $product->price,2) }}</td>
+        <tr>
+            <td>Price</td>
+            <td>::</td>
+            <td>{{ number_format((float) $product->price,2) }}</td>
         </tr>
+
 
     </table>
 </main>
