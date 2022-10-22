@@ -6,6 +6,7 @@ use App\Http\Controllers\Homecontroller;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,4 +58,14 @@ Route::controller(CartController::class)->group(function (){
     Route::get('/cart/completed', 'listCompleted')->name('cart-completed');
     Route::get('/cart/completed/{cart}', 'cartDetail')->name('cart-detail');
     Route::get('/cart/completed/{cart}/export', 'cartExport')->name('cart-export');
+});
+
+Route::controller(UserController::class)->group(function(){
+    Route::get('/user', 'list')->name('user-list');
+    Route::get('/user/create', 'createForm')->name('user-create-form');
+    Route::post('/user/create', 'create')->name('user-create');
+    Route::get('/user/{user}', 'show')->name('user-view');
+    Route::get('/user/{user}/update','updateForm')->name('user-update-form');
+    Route::post('/user/{user}/update','update')->name('user-update');
+    Route::get('/user/{user}/delete','delete')->name('user-delete');
 });

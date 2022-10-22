@@ -267,11 +267,13 @@ footer {
     max-width: 100%;
     flex-flow: row wrap;
     margin: 0 auto;
+    
 }
 .item{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
 }
 .pro{
     padding: 10px 10px;
@@ -279,11 +281,15 @@ footer {
     margin: 10px 20px;
     box-shadow: 0 0 15px black;
     background-color: antiquewhite;
+    border-radius:15px;
 }
 
 .pro img{
     height: 15rem;
+    border-radius: 15px;
 }
+
+
 button a{
    text-decoration: none;
     color: white; 
@@ -316,12 +322,38 @@ li{
     width: 20%;
 }
 
+.modal{
+    width: 100%;
+    /*background-color: rgb(160, 243, 243);*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-content{
+    display: flex;
+    width: 100%;
+}
+.modal-content img{
+    width: 20vw;
+    height: 20vw;
+    border-radius: 10px;  
+}
+.modal-detail{
+    display: flex;
+    justify-content: center;
+    padding-left: 10%;
+    align-items: center;
+    /*background-color: #d44d53;*/
+}
+
 .view-table{
-    width: 60%;
+    font-size: 18px;
+    width: 50%;
     text-align: left;
     margin-left: auto;
     margin-right: auto;
 }
+
 .img-detail-com {
     width: 50px;
     height: 50px;

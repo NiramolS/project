@@ -8,7 +8,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 abstract class SearchableController extends Controller
 {
-    abstract function getQuery() : Builder;
+    abstract function getQuery() : Builder|Relation;
 
     function filterByTerm(Builder|Relation $query, ?string $term): Builder|Relation
     {

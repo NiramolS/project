@@ -3,8 +3,7 @@
 @section('title', $title)
 
 @section('content')
-<main class=main-main>
-    <form class="form" action="{{ route('user-list') }}" method="get">
+<form class="form" action="{{ route('user-list') }}" method="get">
         <table class="search-table">
             <tr>
                 <td class="td1">Search</td>
@@ -22,6 +21,7 @@
             </tr>
         </table>
     </form>
+<main class=main-main>
     <table>
         <nav>
             <ul>

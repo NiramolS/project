@@ -3,47 +3,98 @@
 @section('title', $title)
 
 @section('content')
-<main>
-    <nav>
-        <ul>
-            <li>
-                <a href="{{ route('product-update-form', ['product' => $product->code,]) }}">Update</a>
-            </li>
-            <li>
-                <a href="{{ route('product-delete', ['product' => $product->code,]) }}">Delete</a>
-            </li>
-        </ul>
-    </nav>
+<nav>
+    <ul>
+        <li>
+            <a href="{{route('product-list')}}">
+                << Back</a>
+        </li>
+        <li>
+            <a href="{{ route('product-update-form', ['product' => $product->code,]) }}">Update</a>
+        </li>
+        <li>
+            <a href="{{ route('product-delete', ['product' => $product->code,]) }}">Delete</a>
+        </li>
+    </ul>
+</nav>
 
-    <table class="view-table">
+<main>
+    <div class="modal">
+        <div class="modal-bg">
+            <div class="modal-content">
+                <img src="{{ Storage::url($product->image) }}" alt="" class="img-product-view">
+                <div class="modal-detail">
+                    <table width="100">
+                        <tr>
+                            <td>Code</td>
+                            <td>::</td>
+                            <td>{{ $product->code }}</td>
+                        </tr>
+                        <tr>
+                            <td>Product</td>
+                            <td>::</td>
+                            <td>{{ $product->name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Category</td>
+                            <td>::</td>
+                            <td>{{ $product->category->name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Price</td>
+                            <td>::</td>
+                            <td>{{ number_format((float) $product->price,2) }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><button><a href="{{ route('cart-add-product', [
+                    'product' => $product->code,
+                    ])}}" class="btn-view">BUY</a></button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <table class="view-table" border="1">
         <tr>
-            <td rowspan="5">
-                <img src="{{ Storage::url($product->image) }}" alt="" class="img-product-view" width="50px">
+            <td>
+               <center> <img src="{{ Storage::url($product->image) }}" alt="" class="img-product-view"></center>
+            </td>
+            <td>
+                <table width="100">
+                    <tr>
+                        <td>Code</td>
+                        <td>::</td>
+                        <td>{{ $product->code }}</td>
+                    </tr>
+                    <tr>
+                        <td>Product</td>
+                        <td>::</td>
+                        <td>{{ $product->name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Category</td>
+                        <td>::</td>
+                        <td>{{ $product->category->name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td>::</td>
+                        <td>{{ number_format((float) $product->price,2) }}</td>
+                    </tr>
+                </table>
             </td>
         </tr>
         <tr>
-            <td>Code</td>
-            <td>::</td>
-            <td>{{ $product->code }}</td>
+            <td></td>
+            <td><button><a href="{{ route('cart-add-product', [
+                    'product' => $product->code,
+                    ])}}" class="btn-view">BUY</a></button></td>
         </tr>
-        <tr>
-            <td>Product</td>
-            <td>::</td>
-            <td>{{ $product->name }}</td>
-        </tr>
-        <tr>
-            <td>Category</td>
-            <td>::</td>
-            <td>{{ $product->category->name }}</td>
-        </tr>
-        <tr>
-            <td>Price</td>
-            <td>::</td>
-            <td>{{ number_format((float) $product->price,2) }}</td>
-        </tr>
-
-
-    </table>
+    </table> -->
 </main>
 
 @endsection

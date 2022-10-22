@@ -19,13 +19,7 @@
     <div class="paginate">{{ $categories->withQueryString()->links() }}</div>
 
     <main class="main-main">
-    <nav>
-            <ul>
-                <li>
-                    <a href="{{ route('category-create-form') }}">New Category</a>
-                </li>
-            </ul>
-        </nav>
+    
 
         @foreach($categories as $category)
         <div class="container">

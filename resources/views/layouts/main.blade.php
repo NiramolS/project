@@ -26,6 +26,7 @@
                     </div>
                 </li>
                 <li><a>CONTACT US</a></li>
+                <li><a href="{{route('user-list')}}">USER</a></li>
                 <li><a>LOG OUT</a></li> <!--เหลือ status error -->   
             </ul>
             @auth
