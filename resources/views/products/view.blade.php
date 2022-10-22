@@ -18,13 +18,14 @@
     </ul>
 </nav>
 
+
 <main>
     <div class="modal">
         <div class="modal-bg">
             <div class="modal-content">
                 <img src="{{ Storage::url($product->image) }}" alt="" class="img-product-view">
                 <div class="modal-detail">
-                    <table width="100">
+                    <table class="table-detail">
                         <tr>
                             <td>Code</td>
                             <td>::</td>
@@ -46,9 +47,9 @@
                             <td>{{ number_format((float) $product->price,2) }}</td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td><button><a href="{{ route('cart-add-product', [
+                   
+                  
+                            <td colspan="3"><button><a href="{{ route('cart-add-product', [
                     'product' => $product->code,
                     ])}}" class="btn-view">BUY</a></button></td>
                         </tr>

@@ -31,7 +31,7 @@ hr {
 .manu-list {
     font-family: "Gill Sans", sans-serif;
     flex-flow: row wrap;
-    padding: 5px 20px 5px 20px;
+    padding: 5px 10px 5px 10px;
     color: #ffffff;
     background-color: #A02228;
     border-top: 1px solid #e5e5e5;
@@ -49,7 +49,7 @@ hr {
     display: inline;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 18px;
-    margin: 35px;
+    margin: 15px;
     text-decoration: none;
     position: relative;
 }
@@ -67,6 +67,7 @@ hr {
     color: #fff;
 }
 .manu-list ul li{
+
     width: 120px;
     margin: 15px;
     padding: 15px;
@@ -235,6 +236,7 @@ footer {
     background-color: #A02228;
     border-top: 1px solid #e5e5e5;
     font-size: 15px;
+    margin-top: 5%;
 }
 
 .topic-index h2 {
@@ -263,10 +265,12 @@ footer {
     align-content: flex-start;
 }
 .flex-container{
+    
     width: 1100px;
     max-width: 100%;
     flex-flow: row wrap;
     margin: 0 auto;
+    margin-top: 30px;
     
 }
 .item{
@@ -321,34 +325,59 @@ li{
 .img-product-view {
     width: 20%;
 }
+.user-table{
+    width:50%;
+    margin-top: 30px;
+}
 
+.user-table td:first-child{
+    text-align: left;
+    font-weight: bold;
+}
+.search-table{
+    margin-left: auto;
+    margin-right: auto;
+}
+.search-table td{
+    border: 0;
+}
 .modal{
     width: 100%;
     /*background-color: rgb(160, 243, 243);*/
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 .modal-content{
+    margin-top: 25px;
     display: flex;
     width: 100%;
 }
 .modal-content img{
+    margin-right: 30px;
     width: 20vw;
     height: 20vw;
     border-radius: 10px;  
 }
 .modal-detail{
+    width: 50%;
     display: flex;
     justify-content: center;
-    padding-left: 10%;
+    padding: 10px;
     align-items: center;
-    /*background-color: #d44d53;*/
+    /*background-color: #d44d53*/;
+}
+
+.table-detail{
+    text-align: left;
+    font-size: 20px;
+    width: 100%;
 }
 
 .view-table{
     font-size: 18px;
-    width: 50%;
+    width: 100%;
     text-align: left;
     margin-left: auto;
     margin-right: auto;
@@ -357,4 +386,20 @@ li{
 .img-detail-com {
     width: 50px;
     height: 50px;
+}
+
+nav li {
+    display: inline;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+nav a {
+    color: #a02228;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background-color: antiquewhite;
 }

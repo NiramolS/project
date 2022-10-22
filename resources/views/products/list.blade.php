@@ -14,14 +14,9 @@
         <button type="button" class="accent">Clear</button>
     </a><br />
 </form>
-
-<nav>
-            <ul>
-                <li>
-                    <a href="{{ route('product-create-form') }}">New Product</a>
-                </li>
-            </ul>
-        </nav>
+            <button>
+                <a href="{{ route('product-create-form') }}">New Product</a>
+            </button>
 
         <div class="paginate">{{ $products->withQueryString()->links() }}</div>
 

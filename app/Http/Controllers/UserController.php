@@ -66,7 +66,7 @@ class UserController extends SearchableController
 
     function updateForm($userEmail)
     {
-        $this->authorize('update', User::class);
+        //$this->authorize('update', User::class);
         $user = $this->find($userEmail);
 
         return view('users.update-form', [
@@ -78,7 +78,7 @@ class UserController extends SearchableController
 
     function update(Request $request, $userEmail)
     {
-        $this->authorize('update', User::class);
+        // $this->authorize('update', User::class);
 
         try {
 
