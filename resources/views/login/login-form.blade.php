@@ -15,17 +15,23 @@
     </header>
     <main>
         <form action="{{ route('authenticate') }}" method="post">
-            @csrf
-            <label>
-                E-mail :: <input type="text" name="email" required />
-            </label><br />
-            <label>
-                Password :: <input type="password" name="password" required />
-            </label><br />
-            <button type="submit" onClick="return false;">Log in</button>
-            @error('credentials')
-            <div class="warn">{{ $message }}</div>
-            @enderror
+        @csrf
+            <div class="login">
+                <label>
+                    <b>Email</b>
+                    <input type="text" name="email" require />
+                </label><br>
+
+                <label>
+                    <b>Password</b>
+                    <input type="password" name="password" require />
+                </label><br>
+
+                <button type="submit">Login</button>
+                @error('credentials')
+                <div class="warn">{{ $message }}</div>
+                @enderror
+            </div>
         </form>
     </main>
 </body>
