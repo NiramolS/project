@@ -45,4 +45,8 @@ class User extends Authenticatable
     function cart() {
         return  $this->hasOne(Cart::class);
     }
+
+    function isAdministrator() : bool {
+        return $this->role === 'ADMIN' ;
+    }
 }

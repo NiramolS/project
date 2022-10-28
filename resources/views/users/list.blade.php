@@ -4,7 +4,7 @@
 
 @section('content')
 <form class="form" action="{{ route('user-list') }}" method="get">
-    <table class="search-table" >
+    <table class="search-table">
         <tr>
             <td class="td1">Search</td>
             <td class="td1">::</td>
@@ -17,24 +17,19 @@
         </tr>
     </table>
 </form>
-<main class=main-main>
-    <table class="user-table" >
-        <nav>
-            <ul>
-                <!-- @can('create', \App\Models\User::class) -->
-                <li>
-                    <button class="new-button"><a href="{{ route('user-create-form') }}">New User</a></button>
-                </li>
-                <!-- @endcan -->
-            </ul>
-        </nav>
 
+
+<button>
+    <a href="{{ route('user-create-form') }}">New User</a>
+</button>
+
+<main class=main-main>
+    <table class="user-table">
         <thead>
             <tr>
                 <th>E-mail</th>
                 <th>Name</th>
                 <th>Role</th>
-                <th>Update</th>
             </tr>
         </thead>
         <tbody>
@@ -44,10 +39,6 @@
                     'user' => $user->email, ]) }}">{{ $user->email }}</a></td>
                 <td class="name">{{ $user->name }}</td>
                 <td class="name">{{ $user->role }}</td>
-                <td><a href="{{ route('user-update-form', [
-                    'user' => $user->email,
-                    ]) }}">Update</a>
-                </td>
             </tr>
             @endforeach
         </tbody>

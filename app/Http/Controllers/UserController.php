@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Hash;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Illuminate\Database\QueryException;
+
 class UserController extends SearchableController
 {
     private string $title = 'User';
@@ -40,7 +41,7 @@ class UserController extends SearchableController
 
     function list(Request $request)
     {
-        //$this->authorize('view', User::class);
+        $this->authorize('view', User::class);
         $search = $this->prepareSearch($request->getQueryParams());
         $query = $this->search($search);
 
@@ -66,7 +67,7 @@ class UserController extends SearchableController
 
     function updateForm($userEmail)
     {
-        //$this->authorize('update', User::class);
+        $this->authorize('update', User::class);
         $user = $this->find($userEmail);
 
         return view('users.update-form', [
@@ -78,7 +79,7 @@ class UserController extends SearchableController
 
     function update(Request $request, $userEmail)
     {
-        // $this->authorize('update', User::class);
+        $this->authorize('update', User::class);
 
         try {
 
@@ -95,7 +96,7 @@ class UserController extends SearchableController
 
             return redirect()->route('user-view', [
                 'user' => $user->email,
-            ])->with('status', "User {$user->email} was updated.");
+            ])->with('status', "$user->email was updated.");
         } catch (QueryException $excp) {
             return redirect()->back()->withInput()->withErrors([
                 'error' => $excp->errorInfo[2],
@@ -106,12 +107,13 @@ class UserController extends SearchableController
     function delete($userEmail)
     {
         $this->authorize('delete', User::class);
+
         try {
             $user = $this->find($userEmail);
             $user->delete();
 
             return redirect(session()->get('bookmark.user-view', route('user-list')))
-                ->with('status', "User {$user->email} was deleted.");
+                ->with('status', "$user->email was deleted.");
         } catch (QueryException $excp) {
             return redirect()->back()->withInput()->withErrors([
                 'error' => $excp->errorInfo[2],
@@ -132,17 +134,18 @@ class UserController extends SearchableController
     function create(Request $request)
     {
         $this->authorize('create', User::class);
+
         try {
             $user = new User();
             $data = $request->getParsedBody();
             $data['password'] = Hash::make($data['password']);
             $user->fill($data);
-            $user->role = $data['role'];
+            $user->role = 'USER';
             $user->email_verified_at = new \DateTimeImmutable();
             $user->save();
 
             return redirect()->route('user-list')
-                ->with('status', "User {$user->email} was created.");
+                ->with('status', "$user->email was created.");
         } catch (QueryException $excp) {
             return redirect()->back()->withInput()->withErrors([
                 'error' => $excp->errorInfo[2],

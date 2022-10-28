@@ -15,11 +15,17 @@
         </a><br />
     </form>
 
-
     <div class="paginate">{{ $categories->withQueryString()->links() }}</div>
 
+    @can('create', \App\Models\Category::class)
+    <button>
+        <a href="{{ route('category-create-form') }}">New Category</a>
+    </button>
+    @endcan
+
     <main class="main-main">
-    
+
+
 
         @foreach($categories as $category)
         <div class="container">
@@ -28,7 +34,7 @@
                     <center>
                         <p>
                             <b>
-                                <img src="{{ Storage::url($category->image) }}" alt="">
+                                <img src="{{ Storage::url($category->image) }}" alt=""><br>
                                 <a href="{{ route('product-list',['category_id'=>$category->id]) }}">{{$category->name}}</a>
                             </b>
                         </p>

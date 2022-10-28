@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="{{ route('category-create') }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('category-update', ['category' => $category->code,]) }}" method="post" enctype="multipart/form-data">
     @csrf
 
     <table>
@@ -16,7 +16,7 @@
                 ::
             </td>
             <td>
-                <input type="text" name="code" />
+                <input type="text" name="code" required value="{{ $category->code }}" />
             </td>
         </tr>
         <tr>
@@ -27,7 +27,7 @@
                 ::
             </td>
             <td>
-                <input type="file" name="image" />
+                <input type="file" name="image">
             </td>
         </tr>
         <tr>
@@ -38,12 +38,12 @@
                 ::
             </td>
             <td>
-                <input type="text" name="name" />
+                <input type="text" name="name" required value="{{ $category->name }}" />
             </td>
         </tr>
     </table>
 
-    <button type="submit">Create</button>
+    <button type="submit">Update</button>
 
 </form>
 

@@ -128,7 +128,7 @@ class CartController extends Controller
 
         $cart->update(['status' => 'COMPLETED']);
 
-        return redirect()->back();
+        return redirect()->route('cart-detail');
     }
 
     function cartDetail($cartId) 

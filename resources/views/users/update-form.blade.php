@@ -3,9 +3,7 @@
 @section('title', $title)
 
 @section('content')
-<form action="{{ route('user-update', [
-'user' => $user->email,
-]) }}" method="post">
+<form action="{{ route('user-update', ['user' => $user->email,]) }}" method="post">
     @csrf
     <table class="update-table" border="0">
         <tr>
@@ -28,7 +26,7 @@
             <td class="td1">::</td>
             <td><select name="role" required>
                     @foreach($roles as $role)
-                    <option value="{{ $role }}" @selected(old('role', $user->role)) === $role)>
+                    <option value="{{ $role }}" @selected(old( $user->role === $role))>
                         {{ $role }}
                     </option>
                     @endforeach

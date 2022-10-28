@@ -16,7 +16,7 @@
 
         @foreach($products as $product)
         <tr>
-            <td>{{ $product->image }}</td>
+            <td><img src="{{ Storage::url($product->image) }}" alt="" class="img-detail-com"></td>
             <td>{{ $product->name }}</td>
             <td> <input type="number" value="{{ $product->pivot->amount }}" name="items[{{$product->id}}][amount]">
            <!-- itemPrice=ราคาต่อหน่วย ยังไม่คูณ-->

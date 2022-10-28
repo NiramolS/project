@@ -5,16 +5,16 @@
 @section('content')
 <nav>
     <ul>
-        <li>
-            <a href="{{route('product-list')}}">
-                << Back</a>
-        </li>
+        @can('update', \App\Models\Product::class)
         <li>
             <a href="{{ route('product-update-form', ['product' => $product->code,]) }}">Update</a>
         </li>
+        @endcan
+        @can('delete', \App\Models\Product::class)
         <li>
             <a href="{{ route('product-delete', ['product' => $product->code,]) }}">Delete</a>
         </li>
+        @endcan
     </ul>
 </nav>
 

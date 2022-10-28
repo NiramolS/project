@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 // use Illuminate\Database\Eloquent\Relations\Relation;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Symfony\Component\HttpFoundation\Request as LaravelRequest;
+use Illuminate\Database\QueryException;
 
 class ProductController extends SearchableController
 {
@@ -35,6 +36,7 @@ class ProductController extends SearchableController
             'title' => "{$this->title}",
             'search' => $search,
             'products' => $query->paginate(10),
+            'category' => isset($data['category_id']) ? Category::find($data['category_id']) : NULL,
         ]);
     }
 
@@ -50,6 +52,7 @@ class ProductController extends SearchableController
 
     function createForm()
     {
+        $this->authorize('create', Product::class);
         $categories =  Category::orderBy('code')->get();
 
         return view('products.create-form', [
@@ -60,23 +63,32 @@ class ProductController extends SearchableController
 
     function create(LaravelRequest $request,  CategoryController $categoryController,)
     {
-        $path = $request->file('image')->store('images', 'public');
-        $data = $request->all();
-        $category = $categoryController->find($data['category']);
+        $this->authorize('create', Product::class);
 
-        $product = Product::create([
-            'name' => $data['name'],
-            'code' => $data['code'],
-            'price' => $data['price'],
-            'image' => $path,
-            'category_id' => $data['category'],
-        ]);
+        try {
+            $path = $request->file('image')->store('images', 'public');
+            $data = $request->all();
 
-        return redirect()->route('product-list');
+            $product = Product::create([
+                'name' => $data['name'],
+                'code' => $data['code'],
+                'price' => $data['price'],
+                'image' => $path,
+                'category_id' => $data['category'],
+            ]);
+
+            return redirect()->route('product-list')
+                ->with('status', "$product->name was created.");
+        } catch (QueryException $excp) {
+            return redirect()->back()->withInput()->withErrors([
+                'error' => $excp->errorInfo[2],
+            ]);
+        }
     }
 
     function updateForm($productCode)
     {
+        $this->authorize('update', Product::class);
         $categories =  Category::orderBy('code')->get();
 
         $product = $this->find($productCode);
@@ -90,27 +102,44 @@ class ProductController extends SearchableController
 
     function update(LaravelRequest $request, CategoryController $categoryController, $productCode)
     {
-        $product = $this->find($productCode);
-        $path = $request->file('image')->store('images', 'public');
-        $data = $request->all();
-        $product->update([
-            'name' => $data['name'],
-            'code' => $data['code'],
-            'price' => $data['price'],
-            'image' => $path,
-            'category_id' => $data['category'],
-        ]);
+        $this->authorize('update', Product::class);
 
-        return redirect()->route('product-view', [
-            'product' => $product->code,
-        ]);
+        try {
+            $product = $this->find($productCode);
+            $path = $request->file('image')->store('images', 'public');
+            $data = $request->all();
+            $product->update([
+                'name' => $data['name'],
+                'code' => $data['code'],
+                'price' => $data['price'],
+                'image' => $path,
+                'category_id' => $data['category'],
+            ]);
+
+            return redirect()->route('product-view', [
+                'product' => $product->code,
+            ])
+                ->with('status', "$product->name was updated.");
+        } catch (QueryException $excp) {
+            return redirect()->back()->withInput()->withErrors([
+                'error' => $excp->errorInfo[2],
+            ]);
+        }
     }
 
     function delete($productCode)
     {
-        $product = $this->find($productCode);
-        $product->delete();
+        $this->authorize('delete', Product::class);
+        try {
+            $product = $this->find($productCode);
+            $product->delete();
 
-        return redirect()->route('product-list');
+            return redirect()->route('product-list')
+                ->with('status', "$product->name was deleted.");
+        } catch (QueryException $excp) {
+            return redirect()->back()->withErrors([
+                'error' => $excp->errorInfo[2],
+            ]);
+        }
     }
 }

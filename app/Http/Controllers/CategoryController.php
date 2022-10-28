@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Builder;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Symfony\Component\HttpFoundation\Request as LaravelRequest;
+
 
 class CategoryController extends SearchableController
 {
@@ -42,26 +44,36 @@ class CategoryController extends SearchableController
     function createForm()
     {
         //Retriev categories
+        $this->authorize('create', Category::class);
         
-        
-        return view('products.create-form', [
-            'title' => "Create Product",
+        return view('categories.create-form', [
+            'title' => "{$this->title} : Create",
             
         ]);
     }
 
 
-    function create(Request $request)
+    function create(LaravelRequest $request)
     {
-        $cate = Category::create($request->getParsedBody());
+        $this->authorize('create', Category::class);
 
-        return redirect()->route('category-list');
+        $path = $request->file('image')->store('images', 'public');
+        $data = $request->all();
+       
+        $category = Category::create([
+            'name' => $data['name'],
+            'code' => $data['code'],
+            'image' => $path,
+        ]);
+
+        return redirect()->route('category-list')
+        ->with('status',"$category->name was created.");
     }
 
 
     function updateForm($categoryCode)
     {
-
+        $this->authorize('update', Category::class);
 
         $category = $this->find($categoryCode);
 
@@ -71,24 +83,30 @@ class CategoryController extends SearchableController
         ]);
     }
 
-    function update(Request $request, $productCode)
+    function update(Request $request, $categoryCode)
     {
-        //$product = Product::updated($request->getParsedBody());
+        //$category = category::updated($request->getParsedBody());
 
-        $product = $this->find($productCode);
-        $product->fill($request->getParsedBody());
-        $product->save();
+        $this->authorize('update', Category::class);
 
-        return redirect()->route('product-view', [
-            'product' => $product->code,
-        ]);
+        $category = $this->find($categoryCode);
+        $category->fill($request->getParsedBody());
+        $category->save();
+
+        return redirect()->route('product-list', [
+            'category_id' => $category->id
+        ])
+        ->with('status',"$category->name was updated.");
     }
 
-    function delete($productCode)
+    function delete($categoryCode)
     {
-        $product = $this->find($productCode);
-        $product->delete();
+        $this->authorize('delete', Category::class);
 
-        return redirect()->route('product-list');
+        $category = $this->find($categoryCode);
+        $category->delete();
+
+        return redirect()->route('category-list')
+        ->with('status',"$category->name was deleted.");
     }
 }

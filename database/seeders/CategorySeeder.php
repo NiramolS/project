@@ -17,16 +17,19 @@ class CategorySeeder extends Seeder
     {
         Category::create([
             'code'=>'001',
+            'image'=> 'images/men.png',
             'name'=>'Men',
         ]);
 
         Category::create([
             'code'=>'002',
+            'image'=> 'images/women.png',
             'name'=>'Women',
         ]);
 
         Category::create([
             'code'=>'003',
+            'image'=> 'images/kids.png',
             'name'=>'Kids',
         ]);
 
