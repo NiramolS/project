@@ -23,6 +23,7 @@
 
     @if($category)
     @can('update',\App\Models\Product::class)
+    <nav class="ud" >
     <li>
         <a href="{{ route('category-update-form', ['category' => $category->code,]) }}">Update</a>
     </li>
@@ -31,6 +32,7 @@
     <li>
         <a href="{{ route('category-delete', ['category' => $category->code,]) }}">Delete</a>
     </li>
+    </nav>
     @endcan
     @endif
 
@@ -46,16 +48,12 @@
                         <img src="{{ Storage::url($product->image) }}" alt="">
                         <p><b>{{$product->name}}</b></p>
                         <p>{{ number_format((double)$product->price, 2) }}</p>
-                        <button>
                             <li><a href="{{ route('product-view', [
                     'product' => $product->code,
                     ])}}" class="btn-view">VIEW PRODUCT</a></li>
-                        </button>
-                        <button>
                             <li><a href="{{ route('cart-add-product', [
                     'product' => $product->code,
                     ])}}" class="btn-view">BUY</a></li>
-                        </button>
                     </center>
                 </div>
             </div>

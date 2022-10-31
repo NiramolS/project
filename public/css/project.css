@@ -35,7 +35,7 @@ hr {
     color: #ffffff;
     background-color: #A02228;
     border-top: 1px solid #e5e5e5;
-    font-size: 16px;
+    font-size: 20px;
     margin-bottom: 30px;
     position: fixed;
     top: 0%;
@@ -79,7 +79,6 @@ hr {
 }
 
 .manu-list ul li:hover .sub-menu{
-    display: block;
     position: absolute;
     background: #A02228;
     margin-top: 15px;
@@ -94,94 +93,12 @@ hr {
 .manu-list ul li:hover .sub-menu ul li{
     width: 150px;
     padding: 10px;
-    border-bottom: 1px dotted #fff;
     background: transparent;
     border-radius: 0;
     text-align: left;
     padding-left: 5px;
 }
 
-/*.manu-list ul{
-    list-style: none;
-    background-color: #A02228;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-}
-.manu-list li{
-    font-size: 1.2em;
-    line-height: 40px;
-    text-align: left;
-    display: inline;
-}
-.manu-list a{
-    text-decoration: none;
-    display: block;
-    color: white;
-    padding-left: 15px;
-    border-bottom: 1px solid #888;
-    transition: .3s;
-}
-.manu-list a:hover{
-    background-color:burlywood;
-}
-.manu-list a.active{
-    background-color: #aaa;
-    color: #d44d53;
-    cursor: default;
-}
-.manu-list li li{
-    font-size: .8em;
-}
-
-@media screen and (min-width: 650px){
-
-.manu-list li{
-    width: 130px;
-    border-bottom: none;
-    height: 50px;
-    line-height: 50px;
-    font-size: 1.4em;
-    display: inline-block;
-    margin-left: -4px;
-}
-
-.manu-list a{
-    border-bottom: none;
-}
-
-.manu-list > ul > li{
-    text-align: center;
-}
-.manu-list > ul > li > a{
-    padding-left: 0;
-}
-
-.manu-list{
-    position: absolute;
-    display: none;
-    width: inherit;
-}
-}*/
-/* .manu-list a::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 4px;
-    border-radius: 4px;
-    background-color: #ffffff;
-    bottom: 0;
-    left: 0;
-    transform-origin: right;
-    transform: scaleX(0);
-    transition: transform .3s ease-in-out;
-}
-
-.manu-list a:hover::before {
-    transform-origin: left;
-    transform: scaleX(1);
-}
-*/
 .search-form {  
     display: flex;
     justify-content: center;
@@ -203,6 +120,36 @@ hr {
     width: 80px;
     height: 30px;
 }
+.btn-view {
+	background-color:#A02228;
+    text-decoration:none;
+    display:inline-block;
+	border-radius:30px;
+    border:2px solid rgb(222, 202, 94);
+	cursor:pointer;
+	color:#ffffff;
+    padding: 15px 26px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: small;
+}
+.btn-buy {
+    background-color:#A02228;
+    text-decoration:none;
+    margin:auto 20px;
+	border-radius:30px;
+    border:2px solid rgb(222, 202, 94);
+	cursor:pointer;
+	color:#ffffff;
+    padding: 9px 45px;
+    font-weight: bold;
+    font-size: small;
+}
+/*.btn-view a:hover{
+    background-color: #d44d53;
+    color: white;
+}*/
+
 
 input {
     width: 250px;
@@ -228,13 +175,9 @@ button:hover {
     background-color: #d44d53;
 }
 
-.manu-list ul {
-    list-style: none;
-    transition: 5;
-}
 
 footer {
-    display: block;
+  display: block;
     font-family: "Gill Sans", sans-serif;
     flex-flow: row wrap;
     padding: 30px 30px 20px 30px;
@@ -242,7 +185,7 @@ footer {
     background-color: #A02228;
     border-top: 1px solid #e5e5e5;
     font-size: 15px;
-    margin-top: 5%;
+    margin-top: 10%;
 }
 
 .topic-index h2 {
@@ -409,4 +352,62 @@ nav a {
 
 nav a:hover {
     background-color: antiquewhite;
+}
+
+.order-completed{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    font-size: 18px;
+}
+.detail-completed{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    width: 50%;
+    font-size: 18px;
+}
+.total-price{
+    color: rgb(137, 34, 39);
+    font-size: 20px;
+    font-weight: bold;
+}
+.cat-name{
+    color: rgb(137, 34, 39);
+    font-size: 20;
+    text-decoration:none;
+}
+.cart-list{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    width: 50%;
+    font-size: 18px;
+}
+.status {
+    text-align: center;
+    font-weight: bold;
+    color: rgb(23, 204, 23);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: solid 3px rgb(180, 132, 11);
+    border-radius: 20px;
+    padding: 15px;
+    display: inline-block;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.warn{
+    color: #e61d60;
+}
+
+.ud{
+    text-align: right;
+    margin-right: 10%;
+}
+
+.login-form{
+    text-align: left;
+    position: absolute;
 }

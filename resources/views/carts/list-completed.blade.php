@@ -4,19 +4,21 @@
 
 @section('content')
 
-<table>
-    <tr>
-        <td>Date</td>
-        <td>Total Price</td>
-    </tr>
-    @foreach($carts as $cart)
+<main>
+    <table class="order-completed">
+        <tr>
+            <th>Date</th>
+            <th>Total Price</th>
+        </tr>
+        @foreach($carts as $cart)
         <tr>
             <td>{{ $cart->created_at }}</td>
             <td>{{ $cart->total_price }}</td>
-            <td><a href="{{ route('cart-detail', [
+            <td><nav><a href="{{ route('cart-detail', [
                     'cart' => $cart->id,
-                    ])}}"> Detail</a></td>
+                    ])}}"> Detail</a></nav></td>
         </tr>
         @endforeach
-</table>
+    </table>
+</main>
 @endsection

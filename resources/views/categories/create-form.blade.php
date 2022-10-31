@@ -7,7 +7,7 @@
 <form action="{{ route('category-create') }}" method="post" enctype="multipart/form-data">
     @csrf
 
-    <table>
+    <table align="center">
         <tr>
             <td>
                 Code

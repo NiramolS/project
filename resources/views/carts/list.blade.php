@@ -6,12 +6,12 @@
 
 <form action="{{ route('cart-update') }}" method="post">
     @csrf
-    <table>
+    <table class="cart-list">
         <tr>
-            <td>Image</td>
-            <td>Name</td>
-            <td>Amount</td>
-            <td>Total Price</td>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Total Price</th>
         </tr>
 
         @foreach($products as $product)
@@ -23,19 +23,22 @@
              <input type="number" value="{{ $product->price  }}" name="items[{{$product->id}}][itemPrice]" hidden> </td>
 
             <td>{{ $product->pivot->price }}</td>
-            <td><a href="{{ route('cart-remove-product', [
+            <td><nav><a href="{{ route('cart-remove-product', [
                     'product' => $product->code,
-                    ])}}"> Remove</a>
+                    ])}}">Remove</a><nav>
                </td>
         </tr>
         @endforeach
 
         <tr>
-            <td colspan="4" style="text-align: right;">{{ $cart->total_price}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="total-price">{{ $cart->total_price}}</td>
         </tr>
     </table>
 
     <button type="submit">Update Cart</button>
-    <a href="{{ route('cart-confirm') }}" style="color: black;">Confirm</a>
+    <button><a href="{{ route('cart-confirm') }}">Confirm</a></button>
 </form>
 @endsection

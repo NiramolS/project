@@ -35,9 +35,6 @@
                     <a href="{{ route('cart-completed')}}">ORDERED</a>
                 </li>
                 @endauth
-                <li>
-                    <a>CONTACT US</a>
-                </li>
                 @auth
                 @can('view', \App\Models\User::class)
                 <li>

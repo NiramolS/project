@@ -35,7 +35,8 @@
                         <p>
                             <b>
                                 <img src="{{ Storage::url($category->image) }}" alt=""><br>
-                                <a href="{{ route('product-list',['category_id'=>$category->id]) }}">{{$category->name}}</a>
+                                <a href="{{ route('product-list',['category_id'=>$category->id]) }}" class="cat-name">
+                                    {{$category->name}}</a>
                             </b>
                         </p>
                     </center>

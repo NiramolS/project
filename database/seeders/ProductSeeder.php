@@ -25,7 +25,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'code'=>'P001',
-            'name'=>'Man Pant',
+            'name'=>'Men Pant',
             'price' => 300,
             'image'=> 'images/P001.jpg',
             'category_id'=> 1,

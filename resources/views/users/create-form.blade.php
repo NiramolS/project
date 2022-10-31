@@ -6,7 +6,7 @@
 <form action="{{ route('user-create') }}" method="post">
     @csrf
 
-    <table class="create-table" border="0">
+    <table class="create-table" align="center">
         <tr>
             <td class="td1">E-mail</td>
             <td class="td1">::</td>

@@ -47,11 +47,10 @@
                             <td>{{ number_format((float) $product->price,2) }}</td>
                         </tr>
                         <tr>
-                   
                   
-                            <td colspan="3"><button><a href="{{ route('cart-add-product', [
+                            <td colspan="3"><a href="{{ route('cart-add-product', [
                     'product' => $product->code,
-                    ])}}" class="btn-view">BUY</a></button></td>
+                    ])}}" class="btn-buy">BUY</a></td>
                         </tr>
                     </table>
                 </div>
