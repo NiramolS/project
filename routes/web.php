@@ -57,7 +57,7 @@ Route::controller(LoginController::class)->group(function(){
 
 Route::controller(CartController::class)->group(function (){
     Route::get('/cart/product', 'list')->name('cart-product-list');
-    Route::get('/cart/add/{product}', 'addProduct')->name('cart-add-product');
+    Route::get('/cart/add/{product}', 'addProduct')->name('cart-add-product')->middleware('auth');
     Route::get('/cart/remove/{product}', 'removeProduct')->name('cart-remove-product');
     Route::post('/cart/update', 'update')->name('cart-update');
     Route::get('/cart/confirm', 'confirm')->name('cart-confirm');

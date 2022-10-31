@@ -8,39 +8,46 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/project.css')}}">
 </head>
 
-<body class="login-form">
+<body style="background-color:#A02228;">
+
+    <main class="login-form" >
     <header>
+        <center>
         <h1 class="cmp-title">
             LOGIN
         </h1>
+        </center>
     </header>
-    <main>
-        <form action="{{ route('authenticate') }}" method="post">
-            @csrf
-            <table>
-                <tr>
-                    <td>E-mail</td>
-                </tr>
-                <tr>
-                    <td><input type="text" name="email" required /></td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                </tr>
-                <tr>
-                    <td><input type="password" name="password" required /></td>
-                </tr>
-                <tr>
-                    <td><center><button type="submit">Login</button></center></td>
-                </tr>
-            </table>
+            <form action="{{ route('authenticate') }}" method="post">
+                @csrf
+                <table>
+                    <tr>
+                        <td>E-mail</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="email" required /></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                    </tr>
+                    <tr>
+                        <td><input type="password" name="password" required /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <center><button type="submit">Login</button></center>
+                        </td>
+                    </tr>
+                </table>
 
-            @error('credentials')
-            <div class="warn">{{ $message }}</div>
-            @enderror
-            </div>
+                @error('credentials')
+                <div class="warn">{{ $message }}</div>
+                @enderror
+        </div>
         </form>
+
     </main>
+
 </body>
 
 </html>

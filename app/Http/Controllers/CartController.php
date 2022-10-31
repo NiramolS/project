@@ -45,10 +45,13 @@ class CartController extends Controller
 
     function addProduct($productCode)
     {
+        $this->authorize('view', User::class);
+
         $product = Product::where('code', $productCode)->firstOrFail();
 
         $user = Auth::user();
         $cart = $user->cart()->where('status', 'INCOMPLETE')->first();
+
 
         if (!$cart) {
             $cart =  Cart::create([
