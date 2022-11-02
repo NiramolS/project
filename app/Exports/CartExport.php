@@ -16,7 +16,7 @@ class CartExport implements FromView
     public function view(): View
     {
         return view('carts.list-detail-export', [
-        'title' => 'Orederd Detail',
+        'title' => 'Ordered Detail',
          'cart' => $this->cart,
          'products' => $this->cart->products,
         ]);

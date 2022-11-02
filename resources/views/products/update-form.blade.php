@@ -16,7 +16,7 @@
                 ::
             </td>
             <td>
-                <input type="text" name="code" required value="{{ old('code', $product->code) }}"/>
+                <input type="text" name="code"  value="{{ old('code', $product->code) }}"/>
             </td>
         </tr>
         <tr>
@@ -38,7 +38,7 @@
                 ::
             </td>
             <td>
-                <input type="text" name="name" required value="{{ old('name', $product->name) }}" />
+                <input type="text" name="name"  value="{{ old('name', $product->name) }}" />
             </td>
         </tr>
         <tr>
@@ -49,7 +49,7 @@
                 ::
             </td>
             <td>
-            <select name="category" id="inp-category" required>
+            <select name="category" id="inp-category" >
                     @foreach($categories as $category)
                     <option value="{{ $category->code }}"
                         @selected (old('category', $product->category->code === $category->code))>
@@ -66,7 +66,7 @@
                 ::
             </td>
             <td>
-                <input type="number" step="any" name="price" required value="{{ old('price', $product->price) }}" />
+                <input type="number" step="any" name="price"  value="{{ old('price', $product->price) }}" />
             </td>
         </tr>
     </table>

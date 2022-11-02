@@ -193,6 +193,11 @@ footer {
     border-top: 1px solid #e5e5e5;
     font-size: 15px;
     margin-top: 10%;
+    bottom: 0;
+
+    width: 100%;
+    left: 0;
+
 }
 
 .topic-index h2 {
@@ -437,7 +442,7 @@ nav a:hover {
     padding: 30px;
     position: fixed;
     top: 30%;
-    left: 46%;
+    left: 45%;
     margin-left: -100px;
     margin-top: -50px;
     box-shadow: 0 0 15px black;

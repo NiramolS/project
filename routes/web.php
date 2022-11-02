@@ -55,9 +55,9 @@ Route::controller(LoginController::class)->group(function(){
     Route::get('/auth/logout', 'logout')->name('logout');
 });
 
-Route::controller(CartController::class)->group(function (){
+Route::controller(CartController::class)->middleware('auth')->group(function (){
     Route::get('/cart/product', 'list')->name('cart-product-list');
-    Route::get('/cart/add/{product}', 'addProduct')->name('cart-add-product')->middleware('auth');
+    Route::get('/cart/add/{product}', 'addProduct')->name('cart-add-product');
     Route::get('/cart/remove/{product}', 'removeProduct')->name('cart-remove-product');
     Route::post('/cart/update', 'update')->name('cart-update');
     Route::get('/cart/confirm', 'confirm')->name('cart-confirm');
@@ -66,7 +66,7 @@ Route::controller(CartController::class)->group(function (){
     Route::get('/cart/completed/{cart}/export', 'cartExport')->name('cart-export');
 });
 
-Route::controller(UserController::class)->group(function(){
+Route::controller(UserController::class)->middleware('auth')->group(function(){
     Route::get('/user', 'list')->name('user-list');
     Route::get('/user/create', 'createForm')->name('user-create-form');
     Route::post('/user/create', 'create')->name('user-create');

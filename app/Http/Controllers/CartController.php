@@ -35,7 +35,7 @@ class CartController extends Controller
     function listCompleted() 
     {
         $user = Auth::user();
-        $carts = $user->cart()->where('status', 'COMPLETED')->get();
+        $carts = $user->cart()->where('status', 'COMPLETED')->limit(10)->orderByDesc('updated_at')->get();
 
         return view('carts.list-completed', [
             'title' => 'Completed Order',
@@ -45,7 +45,7 @@ class CartController extends Controller
 
     function addProduct($productCode)
     {
-        $this->authorize('view', User::class);
+        
 
         $product = Product::where('code', $productCode)->firstOrFail();
 
@@ -139,7 +139,7 @@ class CartController extends Controller
        $cart = Cart::with('products')->where('id', $cartId)->firstOrFail();
 
        return view('carts.list-detail-completed',[
-        'title' => 'Orederd Detail',
+        'title' => 'Ordered Detail',
         'cart' => $cart,
         'products' => $cart->products,
        ]);

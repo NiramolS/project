@@ -25,13 +25,13 @@
                         <td>E-mail</td>
                     </tr>
                     <tr>
-                        <td><input type="text" name="email" required /></td>
+                        <td><input type="text" name="email"  /></td>
                     </tr>
                     <tr>
                         <td>Password</td>
                     </tr>
                     <tr>
-                        <td><input type="password" name="password" required /></td>
+                        <td><input type="password" name="password"  /></td>
                     </tr>
                     <tr>
                         <td>

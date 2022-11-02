@@ -16,7 +16,7 @@
                 ::
             </td>
             <td>
-                <input type="text" name="code" required value="{{ $category->code }}" />
+                <input type="text" name="code" value="{{ $category->code }}" />
             </td>
         </tr>
         <tr>
@@ -38,7 +38,7 @@
                 ::
             </td>
             <td>
-                <input type="text" name="name" required value="{{ $category->name }}" />
+                <input type="text" name="name"  value="{{ $category->name }}" />
             </td>
         </tr>
     </table>
