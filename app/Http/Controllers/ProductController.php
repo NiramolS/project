@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
-// use App\Models\Shop;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Builder;
 // use Illuminate\Database\Eloquent\Relations\Relation;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -106,15 +106,27 @@ class ProductController extends SearchableController
 
         try {
             $product = $this->find($productCode);
-            $path = $request->file('image')->store('images', 'public');
             $data = $request->all();
-            $product->update([
-                'name' => $data['name'],
-                'code' => $data['code'],
-                'price' => $data['price'],
-                'image' => $path,
-                'category_id' => $data['category'],
-            ]);
+            if (!empty($data['image'])) {
+                $path = $request->file('image')->store('images', 'public');
+                $product->update([
+                    'name' => $data['name'],
+                    'code' => $data['code'],
+                    'price' => $data['price'],
+                    'image' => $path,
+                    'category_id' => $data['category'],
+                ]);    
+            } 
+            else 
+            {
+                unset($path);
+                $product->update([
+                    'name' => $data['name'],
+                    'code' => $data['code'],
+                    'price' => $data['price'],
+                    'category_id' => $data['category'],
+                ]);
+            }
 
             return redirect()->route('product-view', [
                 'product' => $product->code,

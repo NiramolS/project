@@ -32,6 +32,9 @@
                 </li>
                 @auth
                 <li>
+                    <a href="{{ route('cart-product-list') }}">CART</a>
+                </li>
+                <li>
                     <a href="{{ route('cart-completed')}}">ORDERED</a>
                 </li>
                 @endauth

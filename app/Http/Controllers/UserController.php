@@ -45,7 +45,7 @@ class UserController extends SearchableController
         $search = $this->prepareSearch($request->getQueryParams());
         $query = $this->search($search);
 
-        session()->put('bookmark.user-view', $request->getUri());
+        // session()->put('bookmark.user-view', $request->getUri());
 
         return view('users.list', [
             'title' => "{$this->title} : List",

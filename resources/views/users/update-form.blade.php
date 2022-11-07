@@ -26,7 +26,7 @@
             <td class="td1">::</td>
             <td><select name="role" >
                     @foreach($roles as $role)
-                    <option value="{{ $role }}" @selected(old( $user->role === $role))>
+                    <option value="{{ $role }}" @selected(old('role', $user->role) === $role)>
                         {{ $role }}
                     </option>
                     @endforeach

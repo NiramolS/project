@@ -27,7 +27,7 @@
                 ::
             </td>
             <td>
-                <input type="file" name="image" >
+                <img src="{{ Storage::url($product->image) }}" alt="" class="img-detail-com"><input type="file" name="image" >
             </td>
         </tr>
         <tr>

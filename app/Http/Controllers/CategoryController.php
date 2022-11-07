@@ -6,7 +6,7 @@ use App\Models\Category;
 use Illuminate\Database\Eloquent\Builder;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Symfony\Component\HttpFoundation\Request as LaravelRequest;
-
+use Illuminate\Database\QueryException;
 
 class CategoryController extends SearchableController
 {
@@ -43,7 +43,7 @@ class CategoryController extends SearchableController
 
     function createForm()
     {
-        //Retriev categories
+        //Retrieve categories
         $this->authorize('create', Category::class);
         
         return view('categories.create-form', [
@@ -57,6 +57,7 @@ class CategoryController extends SearchableController
     {
         $this->authorize('create', Category::class);
 
+        try {
         $path = $request->file('image')->store('images', 'public');
         $data = $request->all();
        
@@ -68,6 +69,11 @@ class CategoryController extends SearchableController
 
         return redirect()->route('category-list')
         ->with('status',"$category->name was created.");
+        } catch (QueryException $excp) {
+        return redirect()->back()->withInput()->withErrors([
+            'error' => $excp->errorInfo[2],
+        ]);
+        }
     }
 
 
@@ -83,30 +89,57 @@ class CategoryController extends SearchableController
         ]);
     }
 
-    function update(Request $request, $categoryCode)
+    function update(LaravelRequest $request, $categoryCode)
     {
-        //$category = category::updated($request->getParsedBody());
-
+        
         $this->authorize('update', Category::class);
-
+        
+        try {
         $category = $this->find($categoryCode);
-        $category->fill($request->getParsedBody());
-        $category->save();
+        
+        $data = $request->all();
+        if(!empty($data['image'])) {
+            $path = $request->file('image')->store('images', 'public');
+            $category->update([
+                'name' => $data['name'],
+                'code' => $data['code'],
+                'image' => $path,
+            ]);
+        }
+        else
+        {
+            unset($path);
+            $category->update([
+                'name' => $data['name'],
+                'code' => $data['code'],
+            ]);
+        }
 
         return redirect()->route('product-list', [
             'category_id' => $category->id
         ])
         ->with('status',"$category->name was updated.");
+    }catch (QueryException $excp) {
+        return redirect()->back()->withInput()->withErrors([
+            'error' => $excp->errorInfo[2],
+        ]);
     }
-
+    }
     function delete($categoryCode)
     {
         $this->authorize('delete', Category::class);
-
-        $category = $this->find($categoryCode);
-        $category->delete();
-
-        return redirect()->route('category-list')
-        ->with('status',"$category->name was deleted.");
+        
+        try {
+            $category = $this->find($categoryCode);
+            $category->delete();
+    
+            return redirect()->route('category-list')
+            ->with('status',"$category->name was deleted.");
+    } catch (QueryException $excp) {
+        return redirect()->back()->withErrors([
+            'error' => $excp->errorInfo[2],
+        ]);
     }
+    }
+
 }
